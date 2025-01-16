@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using Task1.Entities;
 using Task1.Models;
 
@@ -240,7 +241,48 @@ namespace Task1.Controllers
             return View(coldDrinks);
 
         }
+        public IActionResult Alchol (){ return BadRequest(); }
+        public IActionResult HotDrinks()
+        {
+            return View(hotDrinks);
+        }
+        public IActionResult Drink()
+        {
+            return RedirectToAction("Index");
+        }
+        public IActionResult Colds()
+        {
+            return Redirect("Drinks/ColdDrinks");
+        }
+
+        public IActionResult Hots()
+        {
+            return Redirect("/Drinks/HotDrinks");
+        }
+        public IActionResult SearchColds(string key)
+        {
+
+            if (key != null)
+            {
+                var drinks = coldDrinks.Where(drink => drink.Name.Contains(key));
+                return Json(drinks);
+            }
+            else { return NotFound(); }//burda try catch isletmedim demisdiz o proqrami nese yorur deyesen
+        }
 
 
+        public IActionResult SearchHots(string key)
+        {
+            if (key != null)
+            {
+                var drinks = hotDrinks.Where(drink=> drink.Name.Contains(key));
+                return Json(drinks);
+
+            }
+            else
+            {
+                return NotFound();  
+            }
+        }
     }
 }
