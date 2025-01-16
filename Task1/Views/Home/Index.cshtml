@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr.Restaurant</title>
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Mr. Restaurant, please enter a URL to get a product</h1>
+        <button onclick="window.location.href='@Url.Action("Index","Drinks")'">
+            Start
+        </button>
+    </div>
+    
+</body>
+</html>

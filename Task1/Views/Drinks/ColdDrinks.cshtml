@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Task1.Entities.Drink>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColdDrink</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: grid;
+            place-items: center; /* Centers content in the grid container */
+            grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+            grid-gap: 20px; /* Adds space between the grid items */
+            height: 100vh; /* Makes sure the container takes the full height of the viewport */
+            width: 90%; /* Keeps the container width at 90% of the viewport */
+            margin: 0 auto; /* Centers the container horizontally */
+            padding-top: 30px; /* Adds padding to the top */
+        }
+
+
+
+        .drink-item {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+            .drink-item img {
+                max-width: 300px;
+                max-height: 300px;
+                object-fit: cover;
+                margin-right: 20px;
+                border-radius: 8px;
+            }
+
+        .drink-info {
+            flex: 1;
+        }
+
+            .drink-info h2 {
+                font-size: 24px;
+                margin: 10px 0;
+            }
+
+            .drink-info p {
+                font-size: 16px;
+                margin: 5px 0;
+            }
+
+            .drink-info strong {
+                font-weight: bold;
+            }
+
+        
+
+        .drink-item img {
+            margin-bottom: 20px;
+        }
+
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <div class="drink-item">
+                <div class="drink-image">
+                    <img src="@item.Img" class="img-fluid" alt="@item.Name">
+                </div>
+                <div class="drink-info">
+                    <h2>Name: @item.Name</h2>
+                    <p>Description: @item.Description</p>
+                    <p><strong>Price:</strong> @item.Price TL</p>
+                    <p><strong>Type:</strong> @item.Type</p>
+                    <p><strong>Volume:</strong> @item.Liter L</p>
+                </div>
+            </div>
+        }
+    </div>
+
+</body>
+</html>
