@@ -1,16 +1,14 @@
-﻿@model IEnumerable<Task1.Entities.Meal>
+﻿@model IEnumerable<Task1.Entities.Meal>;
 @{
     Layout = null;
 }
-
-
-
 <!DOCTYPE html>
 
 <html>
 <head>
-    <title>HotMeals</title>
-    <style>
+    <title>YourMealSearch</title>
+
+   <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -18,7 +16,7 @@
             padding: 0;
         }
 
-        .container {
+        .container2 {
             display: grid;
             place-items: center; /* Centers content in the grid container */
             grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
@@ -31,7 +29,7 @@
 
 
 
-        .drink-item {
+        .div-item {
             display: flex;
             flex-wrap: wrap;
             margin-bottom: 20px;
@@ -41,7 +39,7 @@
             border-radius: 8px;
         }
 
-            .drink-item img {
+            .div-item img {
                 max-width: 300px;
                 max-height: 300px;
                 object-fit: cover;
@@ -49,51 +47,50 @@
                 border-radius: 8px;
             }
 
-        .drink-info {
+        .div-info {
             flex: 1;
+            font-weight: bold;
         }
 
-            .drink-info h2 {
+            .div-info h2 {
                 font-size: 24px;
                 margin: 10px 0;
             }
 
-            .drink-info p {
+            .div-info p {
                 font-size: 16px;
                 margin: 5px 0;
             }
 
-            .drink-info strong {
-                font-weight: bold;
-            }
 
 
 
-        .drink-item img {
+
+        .div-item img {
             margin-bottom: 20px;
         }
 
-        }
-    </style>
-    <link href="https://1000logos.net/wp-content/uploads/2019/07/KFC-logo-2006.png" rel="icon" />
+   </style>
 </head>
-<body>
 
-    <div class="container">
+<body>
+    <div class="container2">
         @foreach (var item in Model)
         {
-            <div class="drink-item">
-                <div class="drink-image"><img src="@item.Img" class="img-fluid" alt="@item.Name" /></div>
-                <div class="drink-info">
-                    <h2>Name:@item.Name</h2>
-                    <p style="color:black; font-italic; ">Description:@item.Description</p>
-                    <p style="color:black; font-italic;  ">Price:@item.Price</p>
+
+                    <div class="div-item">
+                    <div class="div-image">
+                        <img src="@item.Img" class="img-fluid" >
+                    </div>
+               <div class="div-info">
+                        <h2>Name:@item.Name</h2>
+                        <p>Description:@item.Description</p>
+                        <p>Price:@item.Price</p>
+                        <p>Price:@item.Price</p>
+               </div>
                 </div>
-            </div>
         }
     </div>
 
-
 </body>
 </html>
-

@@ -259,6 +259,7 @@ namespace Task1.Controllers
         {
             return Redirect("/Drinks/HotDrinks");
         }
+        //queryparam
         public IActionResult SearchColds(string key)
         {
 
@@ -284,5 +285,10 @@ namespace Task1.Controllers
                 return NotFound();  
             }
         }
+
+        //rootParam
+
+
+        //RouteValueDictionary
     }
 }

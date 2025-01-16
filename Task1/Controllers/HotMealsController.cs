@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using System.Collections.Generic;
 using System.Linq;
 using Task1.Entities;
@@ -157,7 +158,57 @@ namespace Task1.Controllers
                 return Json(meal);
             }
         }
+        public IActionResult ColdDishes()
+        {
+
+            return BadRequest();
+        }
+        public IActionResult Drinks()
+        {
+            var route = new RouteValueDictionary(new { action = "Index", Controller = "Drinks" });
+            return RedirectToRoute(route);
+        }
+
+        public IActionResult Cola()
+        {
+            return Redirect("/Drinks/ColdDrinks");
+        }
+        //queryparam
+        public IActionResult Meal(string name)
+        {
+            var meal = meals.Where(meal=>meal.Name.ToLower() == name);  
+            return View(meal);  
+        }
+        public IActionResult Meals()
+        {
+            return RedirectToAction("Index");
+        }
+        public IActionResult Hots() { return Redirect("/HotMeals/Index"); }
+     //rootparam
+        public IActionResult Mealid(int id=-1) {
+            if (id == -1)
+            {
+                return Json(meals);
+            }
+            else { 
+                var meal = meals[id];
+                //var meal = meals.FirstOrDefault(meals => meals.Id == id);   
+                return Json(meal); }
+        }
+
+        public IActionResult HotDrinks() { 
+        
+            var routevalue = new RouteValueDictionary(new {action="HotDrinks",Controller="Drinks"});
+            return RedirectToRoute(routevalue);   
+        }
+        public IActionResult Hotdrink()
+        {
+            return Redirect("/Drinks/HotDrinks");
+
+        }
         //queryparamda  url bitdi FindMeal yeni bu ? qoyuruq ve verilen yeni actionda isdenilen seyi yazriqi ki name=salad id varsa name=salad&id=2 mesleen 
+
+
 
     }
 }
