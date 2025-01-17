@@ -1,7 +1,7 @@
-﻿@{
+﻿@model Task1.Models.HomeViewModel
+@{
     Layout = null;
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,15 +9,211 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mr.Restaurant</title>
-    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        /* Header Styling */
+        .header {
+            background-color: #343a40;
+            padding: 15px;
+            text-align: center;
+        }
+
+            .header a {
+                color: white;
+                text-decoration: none;
+                padding: 10px 20px;
+                font-size: 18px;
+                border-radius: 5px;
+                background-color: #007bff;
+                margin: 0 10px;
+                transition: background-color 0.3s;
+            }
+
+                .header a:hover {
+                    background-color: #0056b3;
+                }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        /* Section Styling */
+        .drink-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .drink-item img {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+            }
+
+        .drink-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+            .drink-info h2 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+
+            .drink-info p {
+                color: #555;
+                margin-bottom: 10px;
+            }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #343a40;
+            color: white;
+            margin-top: 40px;
+        }
+
+            .footer a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+                .footer a:hover {
+                    color: #0056b3;
+                }
+
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <div class="header">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <a asp-controller="Drinks" asp-action="Index">Drinks</a>
+        <a asp-controller="FastFood" asp-action="Index">FastFood</a>
+        <a asp-controller="HotMeals" asp-action="Index">HotMeals</a>
+    </div>
+
+    <!-- Content -->
     <div class="container">
-        <h1>Welcome to Mr. Restaurant, please enter a URL to get a product</h1>
-        <button  >
-            <a style="text-decoration:none; color:black" asp-controller="Drinks" asp-action="Index">Start</a>
-        </button>
+        <h1>Our Menu</h1>
+
+        <!-- Cold Drinks -->
+        <h3 style="font-size: 38px; font:bold;"> Cold Drinks </h3>
+
+        <div class="row">
+            @foreach (var item in Model.ColdDrinks)
+            {
+                <div class="col-md-4">
+                    <div class="drink-item">
+                        <img src="@item.Img" alt="@item.Name" />
+                        <div class="drink-info">
+                            <h2>@item.Name</h2>
+                            <p><strong>Description:</strong> @item.Description</p>
+                            <p><strong>Price:</strong> $@item.Price</p>
+                            <p><strong>Type:</strong> @item.Type</p>
+                            <p><strong>Volume:</strong> @item.Liter L</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Hot Drinks -->
+        <h3 style="font-size: 38px; font:bold;">Hot Drinks  </h3>
+
+        <div class="row">
+            @foreach (var item in Model.HotDrinks)
+            {
+                <div class="col-md-4">
+                    <div class="drink-item">
+                        <img src="@item.Img" alt="@item.Name" />
+                        <div class="drink-info">
+                            <h2>@item.Name</h2>
+                            <p><strong>Liter:</strong> @item.Liter</p>
+                            <p><strong>Price:</strong> $@item.Price</p>
+                            <p><strong>Description:</strong> @item.Description</p>
+                            <p><strong>Type:</strong> @item.Type</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Fast Foods -->
+        <h3 style="font-size: 38px; font:bold;">Fast Foods </h3>
+
+        <div class="row">
+            @foreach (var item in Model.FastFoods)
+            {
+                <div class="col-md-4">
+                    <div class="drink-item">
+                        <img src="@item.Img" alt="@item.Name" />
+                        <div class="drink-info">
+                            <h2>@item.Name</h2>
+                            <p><strong>Fat:</strong> @item.Fat g</p>
+                            <p><strong>Carbohydrates:</strong> @item.Carbohydrates g</p>
+                            <p><strong>Description:</strong> @item.Description</p>
+                            <p><strong>Proteins:</strong> @item.Protein g</p>
+                            <h3>Allergens:</h3>
+                            @foreach (var allergen in item.Allergens)
+                            {
+                                <span class="badge bg-info">@allergen</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Hot Meals -->
+        <h3 style="font-size: 38px; font:bold;">Hot Meals</h3>
+        <div class="row">
+            @foreach (var item in Model.HotMeals)
+            {
+                <div class="col-md-4">
+                    <div class="drink-item">
+                        <img src="@item.Img" alt="@item.Name" />
+                        <div class="drink-info">
+                            <h2>@item.Name</h2>
+                            <p><strong>Description:</strong> @item.Description</p>
+                            <p><strong>Price:</strong> $@item.Price</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer" style="background-color: #333; color: white; text-align: center; padding: 20px 0; margin-top: 50px;">
+        <p>© 2025  Mr. Restaurant. All rights reserved. Visit our <a href="#" style="color: #007bff; text-decoration: none;">Privacy Policy</a></p>
+        <p>
+            <a href="https://www.linkedin.com/in/mirtalib-emirli-a66922287?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+               style="color: #007bff; text-decoration: none; font-weight: bold;">
+                By Mirtalib Amirli
+            </a>
+        </p>
     </div>
     
+
 </body>
 </html>

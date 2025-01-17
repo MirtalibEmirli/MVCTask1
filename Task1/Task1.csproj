@@ -3,5 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
+	<Target Name="BuildCss" BeforeTargets="Compile">
+		<Exec Command="npx tailwindcss -i ./wwwroot/css/site.css -o ./wwwroot/css/output.css --watch"></Exec>
+	</Target>
 
 </Project>

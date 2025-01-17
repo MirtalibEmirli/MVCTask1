@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using Task1.Entities;
+using System.Linq;
+using Task1.Entities.Concrets;
 
 namespace Task1.Controllers
 {
-    public class FastFoodController: Controller
+    public class FastFoodController : Controller
     {
-        public List<FastFood> fastFoods= new List<FastFood>{
+        public List<FastFood> fastFoods = new List<FastFood>{
 
                new FastFood {
                     Id = 1,
@@ -187,7 +188,7 @@ namespace Task1.Controllers
                     Carbohydrates = 40f,
                     EnergyValue = 220f
                 }
-                
+
 };
         public IActionResult Index()
         {
@@ -197,7 +198,24 @@ namespace Task1.Controllers
         {
             return Redirect("/drinks/index");
         }
+        public IActionResult HotMeal()
+        {
+            return Redirect("/hotmeals/index");
+        }
 
+        //rootparam
+        public IActionResult Find(int id = -1)
+        {
+            if (id == -1)
+            {
+                return Json(fastFoods);
 
+            }
+
+            else { var fastFood = fastFoods.FirstOrDefault(f => f.Id == id); return Json(fastFood); }
+
+        }
+
+        //queryparam
     }
 }

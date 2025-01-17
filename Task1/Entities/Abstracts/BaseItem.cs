@@ -1,6 +1,6 @@
-﻿namespace Task1.Entities
+﻿namespace Task1.Entities.Abstracts
 {
-    public class Meal
+    public abstract class BaseItem
     {
         public int Price { get; set; }
         public int Id { get; set; }

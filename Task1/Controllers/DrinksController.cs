@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Routing;
 using System.Collections.Generic;
 using System.Linq;
 using Task1.Entities;
+using Task1.Entities.Concrets;
 using Task1.Models;
 
 namespace Task1.Controllers
@@ -121,6 +122,7 @@ namespace Task1.Controllers
 
 };
 
+
         List<Drink> coldDrinks = new List<Drink>()
             {
                   new Drink
@@ -129,7 +131,7 @@ namespace Task1.Controllers
                 Type ="Cold",
                 Price = 15,
                 Liter = 1.5f,
-                Name = "Cola",
+                Name = "Sheridian",
                 Description = "Refreshing cola drink with a bold flavor.",
                 Img = "https://www.tasteatlas.com/images/ingredients/5235e7503bef46d58f0552da57cb37a5.jpg"  //  ,
                
@@ -140,7 +142,7 @@ namespace Task1.Controllers
                 Price = 10,
                 Liter = 2.0f,                Type ="Cold",
 
-                Name = "Sprite",
+                Name = "Mr Black",
                 Description = "Crisp and refreshing lemon-lime soda.",
                 Img = "https://carlbusch.com/wp-content/uploads/2024/03/Mr-Black-Coffee-Liquor-Side-View.jpg"  //  
             },
@@ -150,7 +152,7 @@ namespace Task1.Controllers
                 Price = 12,                Type ="Cold",
 
                 Liter = 1.0f,
-                Name = "Mojito",
+                Name = "Latte",
                 Description = "Minty and lime-infused refreshing cocktail.",
                 Img = "https://i0.wp.com/worldcoffeebeans.com/wp-content/uploads/2019/07/raf_coffee_1.jpg?fit=1500%2C1000&ssl=1"  // vazgecilmez raFFFF 
             },
@@ -160,7 +162,7 @@ namespace Task1.Controllers
                 Price = 18,
                 Liter = 1.0f,                Type ="Cold",
 
-                Name = "Orange Juice",
+                Name = "Mojito",
                 Description = "Freshly squeezed orange juice, packed with vitamins.",
                 Img = "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/mojito-cocktails-150961e.jpg?quality=90&resize=430,390"  // mojito  
             },
@@ -170,7 +172,7 @@ namespace Task1.Controllers
                 Price = 20,
                 Liter = 1.2f,                Type ="Cold",
 
-                Name = "Ginger Ale",
+                Name = "Cola",
                 Description = "A spicy and sweet carbonated drink with ginger flavor.",
                 Img = "https://www.coca-cola.com/content/dam/onexp/ie/en/offerings-2024/best-coke-ever/cczs_best_coke_ever_desktop.png"  // colaa
             },  new Drink
@@ -179,7 +181,7 @@ namespace Task1.Controllers
                 Type ="Cold",
                 Price = 15,
                 Liter = 1.5f,
-                Name = "Cola",
+                Name = "Sheridian",
                 Description = "Refreshing cola drink with a bold flavor.",
                 Img = "https://www.tasteatlas.com/images/ingredients/5235e7503bef46d58f0552da57cb37a5.jpg"  //  ,
                
@@ -190,7 +192,7 @@ namespace Task1.Controllers
                 Price = 10,
                 Liter = 2.0f,                Type ="Cold",
 
-                Name = "Sprite",
+                Name = "MrBlack",
                 Description = "Crisp and refreshing lemon-lime soda.",
                 Img = "https://carlbusch.com/wp-content/uploads/2024/03/Mr-Black-Coffee-Liquor-Side-View.jpg"  //  
             },
@@ -200,7 +202,7 @@ namespace Task1.Controllers
                 Price = 12,                Type ="Cold",
 
                 Liter = 1.0f,
-                Name = "Mojito",
+                Name = "Latte",
                 Description = "Minty and lime-infused refreshing cocktail.",
                 Img = "https://i0.wp.com/worldcoffeebeans.com/wp-content/uploads/2019/07/raf_coffee_1.jpg?fit=1500%2C1000&ssl=1"  // vazgecilmez raFFFF 
             },
@@ -210,7 +212,7 @@ namespace Task1.Controllers
                 Price = 18,
                 Liter = 1.0f,                Type ="Cold",
 
-                Name = "Orange Juice",
+                Name = "Mojito",
                 Description = "Freshly squeezed orange juice, packed with vitamins.",
                 Img = "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/mojito-cocktails-150961e.jpg?quality=90&resize=430,390"  // mojito  
             },
@@ -220,7 +222,7 @@ namespace Task1.Controllers
                 Price = 20,
                 Liter = 1.2f,                Type ="Cold",
 
-                Name = "Ginger Ale",
+                Name = "Cola",
                 Description = "A spicy and sweet carbonated drink with ginger flavor.",
                 Img = "https://www.coca-cola.com/content/dam/onexp/ie/en/offerings-2024/best-coke-ever/cczs_best_coke_ever_desktop.png"  // colaa
             }
@@ -304,7 +306,7 @@ namespace Task1.Controllers
 
         //RouteValueDictionary
 
-        public IActionResult Meal() //if user search for a meal then this link will redirect to My Meals controller :)Hadled 
+        public IActionResult Meal() //if user search for a meal then this link will redirect to My Meals controller :)Handled 
         {
             var routeValue = new RouteValueDictionary(new { action = "Index", Controller = "HotMeals" });
             return RedirectToRoute(routeValue);

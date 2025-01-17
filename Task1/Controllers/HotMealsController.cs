@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Routing;
 using System.Collections.Generic;
 using System.Linq;
-using Task1.Entities;
+using Task1.Entities.Concrets;
 
 namespace Task1.Controllers
 {
@@ -10,8 +10,7 @@ namespace Task1.Controllers
     {
         static string link = "https://simple-veganista.com/wp-content/uploads/2012/09/healthy-chopped-vegetable-salad-recipe-4.jpg";
         static string steak = "https://t3.ftcdn.net/jpg/06/47/55/54/360_F_647555498_3ijmZWT1geR9afLVKPciM9RcSeTFdkKN.jpg";
-
-        List<Meal> meals = new List<Meal> { new Meal
+        private List<Meal> meals = new List<Meal> { new Meal
     {
         Id = 1,
         Name = "Burger",
@@ -57,7 +56,7 @@ namespace Task1.Controllers
         Name = "Steak",
         Description = "Grilled steak cooked to your preference, served with mashed potatoes.",
         Price = 20,
-        Img = link
+        Img = steak
     },
     new Meal
     {

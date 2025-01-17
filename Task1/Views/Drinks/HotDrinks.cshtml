@@ -1,13 +1,15 @@
-﻿@model IEnumerable<Task1.Entities.Drink>
+﻿@model IEnumerable<Task1.Entities.Concrets.Drink>
 
 @{
     Layout = null;
 }
 
 <!DOCTYPE html>
-<html>
-    <head>
+<html lang="en">
+<head>
     <link href="https://1000logos.net/wp-content/uploads/2019/07/KFC-logo-2006.png" rel="icon" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drink Details</title>
     <style>
         body {
@@ -20,41 +22,41 @@
         .container {
             display: grid;
             place-items: center; /* Centers content in the grid container */
-            grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid */
             grid-gap: 20px; /* Adds space between the grid items */
-            height: 100vh; /* Makes sure the container takes the full height of the viewport */
-            width: 90%; /* Keeps the container width at 90% of the viewport */
-            margin: 0 auto; /* Centers the container horizontally */
-            padding-top: 30px; /* Adds padding to the top */
+            width: 90%;
+            margin: 0 auto;
+            padding-top: 30px;
         }
-
-
 
         .drink-item {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column; /* Align items vertically */
+            align-items: center;
             margin-bottom: 20px;
             border: 1px solid #ddd;
             padding: 20px;
             background-color: white;
             border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
             .drink-item img {
-                max-width: 300px;
-                max-height: 300px;
+                width: 100%;
+                max-height: 250px;
                 object-fit: cover;
-                margin-right: 20px;
                 border-radius: 8px;
+                margin-bottom: 20px;
             }
 
         .drink-info {
-            flex: 1;
+            text-align: center;
+            color: #333;
         }
 
             .drink-info h2 {
-                font-size: 24px;
-                margin: 10px 0;
+                font-size: 20px;
+                margin-bottom: 10px;
             }
 
             .drink-info p {
@@ -66,32 +68,38 @@
                 font-weight: bold;
             }
 
-
-
-        .drink-item img {
-            margin-bottom: 20px;
-        }
-
+      
         }
     </style>
-    </head>
-    <body>
+</head>
+<body>
+
     <div class="container">
         @foreach (var item in Model)
         {
             <div class="drink-item">
                 <div class="drink-image">
-                    <img src="@item.Img" class="img-fluid" alt="@item.Name">
+                    <img src="@item.Img" alt="@item.Name" class="img-fluid">
                 </div>
                 <div class="drink-info">
-                    <h2>Name: @item.Name</h2>
-                    <p>Description: @item.Description</p>
-                    <p> Price:  @item.Price TL</p>
-                    <p> Type:  @item.Type</p>
-                    <p> Volume:  @item.Liter L</p>
+                    <h2>@item.Name</h2>
+                    <p><strong>Description:</strong> @item.Description</p>
+                    <p><strong>Price:</strong> @item.Price TL</p>
+                    <p><strong>Type:</strong> @item.Type</p>
+                    <p><strong>Volume:</strong> @item.Liter L</p>
                 </div>
             </div>
         }
     </div>
-    </body>
+    <div class="footer" style="background-color: #333; color: white; text-align: center; padding: 20px 0; margin-top: 50px;">
+        <p>© 2025  Mr. Restaurant. All rights reserved. Visit our <a href="#" style="color: #007bff; text-decoration: none;">Privacy Policy</a></p>
+        <p>
+            <a href="https://www.linkedin.com/in/mirtalib-emirli-a66922287?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+               style="color: #007bff; text-decoration: none; font-weight: bold;">
+                By Mirtalib Amirli
+            </a>
+        </p>
+    </div>
+
+</body>
 </html>

@@ -1,14 +1,16 @@
-﻿@model IEnumerable<Task1.Entities.Meal>;
+﻿@model IEnumerable<Task1.Entities.Concrets.Meal>;
+
 @{
     Layout = null;
 }
+
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <title>YourMealSearch</title>
-
-   <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Meal Search</title>
+    <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -19,42 +21,41 @@
         .container2 {
             display: grid;
             place-items: center; /* Centers content in the grid container */
-            grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Creates responsive grid columns */
             grid-gap: 20px; /* Adds space between the grid items */
-            height: 100vh; /* Makes sure the container takes the full height of the viewport */
-            width: 90%; /* Keeps the container width at 90% of the viewport */
-            margin: 0 auto; /* Centers the container horizontally */
-            padding-top: 30px; /* Adds padding to the top */
+            width: 90%;
+            margin: 0 auto;
+            padding-top: 30px;
         }
-
-
 
         .div-item {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column; /* Stack the image and info vertically */
+            align-items: center;
             margin-bottom: 20px;
             border: 1px solid #ddd;
             padding: 20px;
             background-color: white;
             border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
             .div-item img {
-                max-width: 300px;
-                max-height: 300px;
+                width: 100%;
+                max-height: 250px;
                 object-fit: cover;
-                margin-right: 20px;
                 border-radius: 8px;
+                margin-bottom: 20px;
             }
 
         .div-info {
-            flex: 1;
-            font-weight: bold;
+            text-align: center;
+            color: #333;
         }
 
             .div-info h2 {
-                font-size: 24px;
-                margin: 10px 0;
+                font-size: 20px;
+                margin-bottom: 10px;
             }
 
             .div-info p {
@@ -62,34 +63,40 @@
                 margin: 5px 0;
             }
 
+            .div-info strong {
+                font-weight: bold;
+            }
 
+        
 
-
-
-        .div-item img {
-            margin-bottom: 20px;
         }
-
-   </style>
+    </style>
 </head>
-
 <body>
+
     <div class="container2">
         @foreach (var item in Model)
         {
-
-                    <div class="div-item">
-                    <div class="div-image">
-                        <img src="@item.Img" class="img-fluid" >
-                    </div>
-               <div class="div-info">
-                        <h2>Name:@item.Name</h2>
-                        <p>Description:@item.Description</p>
-                        <p>Price:@item.Price</p>
-                        <p>Price:@item.Price</p>
-               </div>
+            <div class="div-item">
+                <div class="div-image">
+                    <img src="@item.Img" alt="@item.Name" class="img-fluid">
                 </div>
+                <div class="div-info">
+                    <h2>@item.Name</h2>
+                    <p><strong>Description:</strong> @item.Description</p>
+                    <p><strong>Price:</strong> @item.Price</p>
+                </div>
+            </div>
         }
+    </div>
+    <div class="footer" style="background-color: #333; color: white; text-align: center; padding: 20px 0; margin-top: 50px;">
+        <p>© 2025 Hot Meals. All rights reserved. <a href="#" style="color: #007bff; text-decoration: none;">Privacy Policy</a></p>
+        <p>
+            <a href="https://www.linkedin.com/in/mirtalib-emirli-a66922287?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+               style="color: #007bff; text-decoration: none; font-weight: bold;">
+                By Mirtalib Amirli
+            </a>
+        </p>
     </div>
 
 </body>
