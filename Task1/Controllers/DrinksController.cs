@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using System.Collections.Generic;
 using System.Linq;
 using Task1.Entities;
@@ -287,8 +288,38 @@ namespace Task1.Controllers
         }
 
         //rootParam
+        public IActionResult CDrinkId(int id = -1)
+        {
+            if (id==-1)
+            {
+                return Json(coldDrinks);
+            }
 
+            else
+            {
+                var drink = coldDrinks.FirstOrDefault(drink => drink.Id == id);
+                return Json(drink);
+            }
+        }
 
         //RouteValueDictionary
+
+        public IActionResult Meal() //if user search for a meal then this link will redirect to My Meals controller :)Hadled 
+        {
+            var routeValue = new RouteValueDictionary(new { action = "Index", Controller = "HotMeals" });
+            return RedirectToRoute(routeValue);
+            
+        }
+        //her ikisi dogrudur ve eyni isi ferqli  deyerlere gore gorurler
+        public IActionResult HotMeal()
+        {
+            return Redirect("/hotmeals/index");
+        }
+        public IActionResult Hots2()
+        {
+            var routeValue = new RouteValueDictionary(new { action = "Hots", Controller = "Drinks" });
+            return RedirectToRoute(routeValue);
+
+        }
     }
 }

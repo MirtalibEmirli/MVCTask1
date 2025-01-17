@@ -1,0 +1,130 @@
+﻿@model  IEnumerable<Task1.Entities.FastFood>;
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="https://1000logos.net/wp-content/uploads/2019/07/KFC-logo-2006.png" rel="icon" />
+    <title>FastFood</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .allergens-container {
+            height:14vh;
+        }
+
+            .allergens-container h1 {
+                font-size: 24px; /* Make the h1 text bigger */
+                margin-bottom: 10px; /* Space between the h1 and the p elements */
+                color: #333; /* Dark text color for the heading */
+            }
+
+            .allergens-container p {
+                font-size: 19px; /* Slightly smaller text for the allergens */
+                margin: 5px 0; /* Space between each allergen */
+                color: #555; /* Lighter text color for the allergens */
+            }
+
+        .container {
+            display: grid;
+            place-items: center; /* Centers content in the grid container */
+            grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+            grid-gap: 20px; /* Adds space between the grid items */
+            height: 100vh; /* Makes sure the container takes the full height of the viewport */
+            width: 90%; /* Keeps the container width at 90% of the viewport */
+            margin: 0 auto; /* Centers the container horizontally */
+            padding-top: 30px; /* Adds padding to the top */
+        }
+
+
+
+        .drink-item {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+            .drink-item img {
+                max-width: 300px;
+                max-height: 300px;
+                object-fit: cover;
+                margin-right: 20px;
+                border-radius: 8px;
+            }
+
+        .drink-info {
+            flex: 1;
+        }
+
+            .drink-info h2 {
+                font-size: 24px;
+                margin: 10px 0;
+            }
+
+            .drink-info p {
+                font-size: 16px;
+                margin: 5px 0;
+            }
+
+            .drink-info strong {
+                font-weight: bold;
+            }
+
+
+
+        .drink-item img {
+            margin-bottom: 20px;
+        }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        @foreach (var item in Model)
+        {
+
+
+            <div class="drink-item">
+                <div class="drink-image"><img src="@item.Img" alt="Alternate Text" /></div>
+                <div class="drink-info">
+                    <h2>Name:@item.Name </h2>
+                    <p style="color:black; font-italic;  ">Fat:@item.Fat g</p>
+                    <p style="color:black; font-italic;  ">Carbohydrates:@item.Carbohydrates g</p>
+                    <p style="color:black; font-italic;  ">Description:@item.Description </p>
+                    <p>Proteins @item.Protein g</p>
+
+                    <div class="allergens-container">
+                        <h1>Allergens</h1>
+                        @foreach (var item2 in item.Allergens)
+                        {
+                            <p>@item2</p>
+                        }
+                    </div>
+
+                </div>
+                </div>
+                 
+
+                }
+
+           
+    
+    </div>
+
+
+</body>
+</html>
