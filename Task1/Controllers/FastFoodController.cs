@@ -217,5 +217,28 @@ namespace Task1.Controllers
         }
 
         //queryparam
+
+        public IActionResult FindFast(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                return Json(fastFoods);
+            }
+            else
+            {
+                var food = fastFoods.FirstOrDefault(f => f.Name.ToLower() == name);
+                return Json(food);
+            }
+        }
+
+        public IActionResult Search(string key)
+        {
+            if (string.IsNullOrEmpty(key)) { return Json(fastFoods); }
+            else
+            {
+                var foods = fastFoods.Where(food => food.Name.Contains(key));
+                return Json(foods);
+            }
+        }
     }
 }
