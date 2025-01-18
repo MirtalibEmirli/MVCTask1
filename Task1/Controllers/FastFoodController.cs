@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using System.Collections.Generic;
 using System.Linq;
 using Task1.Entities.Concrets;
@@ -190,14 +191,17 @@ namespace Task1.Controllers
                 }
 
 };
+    
         public IActionResult Index()
         {
             return View(fastFoods);
         }
+
         public IActionResult Drink()
         {
             return Redirect("/drinks/index");
         }
+
         public IActionResult HotMeal()
         {
             return Redirect("/hotmeals/index");
@@ -217,7 +221,6 @@ namespace Task1.Controllers
         }
 
         //queryparam
-
         public IActionResult FindFast(string name)
         {
             if (string.IsNullOrEmpty(name))
@@ -239,6 +242,11 @@ namespace Task1.Controllers
                 var foods = fastFoods.Where(food => food.Name.Contains(key));
                 return Json(foods);
             }
+        }
+
+        public IActionResult Alchol() { return BadRequest(); }
+        public IActionResult Fasts() { var routeValue = new RouteValueDictionary(new {action="Index",Controller="FastFood"});
+            return RedirectToRoute(routeValue);
         }
     }
 }

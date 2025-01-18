@@ -244,7 +244,7 @@ namespace Task1.Controllers
             return View(coldDrinks);
 
         }
-        public IActionResult Alchol (){ return BadRequest(); }
+        public IActionResult Alchol() { return BadRequest(); }
         public IActionResult HotDrinks()
         {
             return View(hotDrinks);
@@ -271,7 +271,7 @@ namespace Task1.Controllers
                 var drinks = coldDrinks.Where(drink => drink.Name.Contains(key));
                 return Json(drinks);
             }
-            else { return NotFound(); }//burda try catch isletmedim demisdiz o proqrami nese yorur deyesen
+            else { return Json(coldDrinks); } 
         }
 
 
@@ -279,20 +279,20 @@ namespace Task1.Controllers
         {
             if (key != null)
             {
-                var drinks = hotDrinks.Where(drink=> drink.Name.Contains(key));
+                var drinks = hotDrinks.Where(drink => drink.Name.Contains(key));
                 return Json(drinks);
 
             }
             else
             {
-                return NotFound();  
+                return Json(hotDrinks);
             }
         }
 
         //rootParam
         public IActionResult CDrinkId(int id = -1)
         {
-            if (id==-1)
+            if (id == -1)
             {
                 return Json(coldDrinks);
             }
@@ -310,7 +310,7 @@ namespace Task1.Controllers
         {
             var routeValue = new RouteValueDictionary(new { action = "Index", Controller = "HotMeals" });
             return RedirectToRoute(routeValue);
-            
+
         }
         //her ikisi dogrudur ve eyni isi ferqli  deyerlere gore gorurler
         public IActionResult HotMeal()
